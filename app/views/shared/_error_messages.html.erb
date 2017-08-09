@@ -1,0 +1,51 @@
+
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(object.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<!-- Note:This partial introduces several new Rails and Ruby constructs, including two methods for Rails error objects. The first method is count, which simply returns the number of errors:
+
+>> user.errors.count
+=> 2   -->
+
+
+<!--<!--% if @user.errors.any? %>-->
+<!--  <div id="error_explanation">-->
+<!--    <div class="alert alert-danger">-->
+<!--      The form contains <!--%= pluralize(@user.errors.count, "error") %>.-->
+<!--    </div>-->
+<!--    <ul>-->
+<!--    <!--% @user.errors.full_messages.each do |msg| %>-->
+<!--      <!--li><!--%= msg %--><!--/li>-->
+<!--    <!--% end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--<!--% end %>-->
+
+
+
+
+<!--<!--% if object.errors.any? %>-->
+<!--  <div id="error_explanation">-->
+<!--    <div class="alert alert-danger">-->
+<!--      The form contains <!--%= pluralize(object.errors.count, "error") %>.-->
+<!--    </div>-->
+<!--    <ul>-->
+<!--    <!--% object.errors.full_messages.each do |msg| %>-->
+<!--      <li><!--%= msg %></li>-->
+<!--    <!--% end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--<!--% end %>-->
+

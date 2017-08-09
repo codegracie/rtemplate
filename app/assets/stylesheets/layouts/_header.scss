@@ -1,0 +1,50 @@
+/* Navbar */
+
+.navbar {
+  color: #FFFFFF;
+  background-color: #ff7f50;
+  padding: 1px;
+  margin-bottom:10px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #FFFFFF;
+  padding: 0 8px;
+}
+
+.navbar-fixed-top {
+  position: static;
+}
+
+.navbar .nav>li>span {
+  color: #b9b9b3;
+  padding-right: 0;
+}
+
+.nav-collapse .btn {
+  padding: 4px 4px 4px;
+  font-weight: normal;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.navbar .btn {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.dropdown-menu {
+  min-width: 60px !important;
+  background: white;
+  color: #0000;
+  font-size: 100%;
+}
+
+
+.btn-inverse {
+  border-color: #727267;
+  background-color: #4c4c45;
+  color: white;
+}
+
