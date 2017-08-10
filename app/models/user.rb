@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
   #   following.include?(other_user)
   # end
 
-
+  #ACCOUNT ACTIVATION
   # Activates an account.
   def activate
     update_attribute(:activated,    true)
@@ -138,6 +138,7 @@ class User < ActiveRecord::Base
     UserMailer.account_activation(self).deliver_now
   end
   
+  #PASSWORD RESET
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
@@ -155,10 +156,7 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
-  # Returns true if a password reset has expired.
-  def password_reset_expired?
-    reset_sent_at < 2.hours.ago
-  end
+
 
 
 private
