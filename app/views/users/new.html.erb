@@ -2,7 +2,6 @@
 <!--% provide(:title, 'Sign up') %>-->
 <!--<h1>Sign up</h1>-->
 
-
 <!-- Try 2 -->
 <% provide(:title, 'Sign up') %>
 
@@ -16,8 +15,7 @@
             <div id="signup" class="form-action show">
 
                 <%= form_for(@user, url: signup_path) do |f| %>
-                    <!--%= render 'shared/error_messages' %-->
-                    <%= render 'shared/error_messages', object: f.object %>
+                  <%= render 'shared/error_messages', object: f.object %>
               
                     <%= f.label :name %>
                     <%= f.text_field :name, class: 'form-control' %>

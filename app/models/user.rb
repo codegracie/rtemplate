@@ -51,10 +51,19 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, User.digest(remember_token))
   end
   
+  #-----------TRY 1
   # Returns true if the given token matches the digest.
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  # def authenticated?(remember_token)
+  #   return false if remember_digest.nil?
+  #   BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  # end
+  
+  #-----------TRY 2
+  # Returns true if the given token matches the digest.
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   # Forgets a user.
@@ -85,40 +94,19 @@ class User < ActiveRecord::Base
                      WHERE  follower_id = :user_id"
      Micropost.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
-  
   end
   
   
   
-  #TRY 1
-  
+  #-----TRY 1
   # Follows a user.
-  def follow(other_user)
-    following << other_user
-  end
-
-  # Unfollows a user.
-  def unfollow(other_user)
-    following.delete(other_user)
-  end
-
-  # Returns true if the current user is following the other user.
-  def following?(other_user)
-    following.include?(other_user)
-  end
-
-
-
-  #TRY 2
-  
-  # # Follows a user.
   # def follow(other_user)
-  #   active_relationships.create(followed_id: other_user.id)
+  #   following << other_user
   # end
 
   # # Unfollows a user.
   # def unfollow(other_user)
-  #   active_relationships.find_by(followed_id: other_user.id).destroy
+  #   following.delete(other_user)
   # end
 
   # # Returns true if the current user is following the other user.
@@ -126,7 +114,23 @@ class User < ActiveRecord::Base
   #   following.include?(other_user)
   # end
 
-  #ACCOUNT ACTIVATION
+
+  #-----TRY 2
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
   # Activates an account.
   def activate
     update_attribute(:activated,    true)
@@ -155,9 +159,6 @@ class User < ActiveRecord::Base
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
-
-
-
 
 private
 
