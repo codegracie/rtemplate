@@ -1,22 +1,14 @@
-<!-- Try 1 -->
-<!--% provide(:title, 'Sign up') %>-->
-<!--<h1>Sign up</h1>-->
-
-<!-- Try 2 -->
 <% provide(:title, 'Sign up') %>
-
-    <div class="container">
-        <div class="flat-form">
-            <ul class="tabs">
-                <li>
-                    <a class="active">Sign Up</a>
-                </li>
-            </ul>
-            <div id="signup" class="form-action show">
-
-                <%= form_for(@user, url: signup_path) do |f| %>
-                  <%= render 'shared/error_messages', object: f.object %>
-              
+  <div class="container">
+    <div class="flat-form">
+      <ul class="tabs">
+         <li>
+            <a class="active">Sign Up</a>
+          </li>
+      </ul>
+    <div id="signup" class="form-action show">
+      <%= form_for(@user, url: signup_path) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
                     <%= f.label :name %>
                     <%= f.text_field :name, class: 'form-control' %>
               
