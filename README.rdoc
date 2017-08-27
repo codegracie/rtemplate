@@ -1,3 +1,3 @@
-== AWESOMEBLOG
+== rtemplate
 
-Just a demo project for Mari-san.
+Just a template copy.
